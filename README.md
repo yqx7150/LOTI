@@ -58,7 +58,8 @@ place the dataset in the train file under the church folder.
 
 ## Train:
 
-python main.py --config=configs/ve/church_ncsnpp_continuous.py  --workdir=exp_train_church_max1_N1000 --mode=train --eval_folder=result
+SNO:python main.py --config=configs/ve/church_ncsnpp_continuous.py  --workdir=exp_train_pingole_image --mode=train --eval_folder=result
+SNT:python main.py --config=configs/ve/church_ncsnpp_continuous.py  --workdir=exp_train_twin_image --mode=train --eval_folder=result
 
 
 ## Test:
