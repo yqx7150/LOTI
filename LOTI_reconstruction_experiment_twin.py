@@ -1,6 +1,6 @@
 import functools
 from tkinter import W
-from MyAdjointOperatorPropagation import my_adjoint_operator_propagation
+
 import os
 import torch
 import numpy as np
@@ -460,7 +460,7 @@ def get_pc_sampler(sde, sde_T, shape, predictor, corrector, inverse_scaler, snr,
                 x_mean_save_cv = x_mean_save[0, :, :, :].transpose(1, 2, 0)
                 x_mean_save_cv = (x_mean_save_cv - x_mean_save_cv.min()) / (x_mean_save_cv.max() - x_mean_save_cv.min())
 
-                output_folder = "/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/output/OSHICE"
+                output_folder = "./output/OSHICE"
                 # 确保目标文件夹存在
                 os.makedirs(output_folder, exist_ok=True)
                 # 转换图像格式
