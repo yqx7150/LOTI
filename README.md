@@ -19,11 +19,20 @@ Lensless imaging possesses the advantages of functional flexibility and high por
 ## Generation in high-dimensional joint solution space.
 <div align="center"><img src="https://github.com/yqx7150/LOTI/blob/main/Figs/Fig.4.png"> </div>    
 
-## The multi-phase lensless imaging system.
-<div align="center"><img src="https://github.com/yqx7150/MLDM/blob/main/Figs/fig8.png"> </div>
+## Comprehensive comparison of results in simulative validation. (a) Ground Truth. (b) BP. (c) CS. (d) MLDM. (e) LOTI. 
+<div align="center"><img src="https://github.com/yqx7150/LOTI/blob/main/Figs/Fig.5.png"> </div>    
 
-## Visual comparison of reconstructed images on optical experiment. (a) Ground Truth (b) BP (c) CS (d) LSGM (e) ADMM (f) MLDM-I (g) MLDM-II.
-<div align="center"><img src="https://github.com/yqx7150/MLDM/blob/main/Figs/fig9.png"> </div>
+## Comprehensive comparison of results in generalization validation. (a) Ground Truth. (b) BP. (c) CS. (d) MLDM. (e) LOTI. 
+<div align="center"><img src="https://github.com/yqx7150/LOTI/blob/main/Figs/Fig.6.png"> </div>    
+
+## Lensless imaging system encoded by orthogonal-phase FZA mask.
+<div align="center"><img src="https://github.com/yqx7150/MLDM/blob/main/Figs/Fig.7.png"> </div>
+
+## Comprehensive comparison of results in experimental validation. (a) Ground Truth. (b) BP. (c) CS. (d) MLDM. (e) LOTI. 
+<div align="center"><img src="https://github.com/yqx7150/MLDM/blob/main/Figs/Fig.8.png"> </div>
+
+## Reconstruction results under real-world scenarios. (a) Ground Truth. (b) BP. (c) CS. (d) MLDM. (e) LOTI. 
+<div align="center"><img src="https://github.com/yqx7150/MLDM/blob/main/Figs/Fig.9.png"> </div>
 
 
 ## Requirements and Dependencies
@@ -39,7 +48,7 @@ Lensless imaging possesses the advantages of functional flexibility and high por
     jax==0.2.26
 
 ## Checkpoints
-We provide pretrained checkpoints. You can download pretrained models from  [Baidu cloud] (https://pan.baidu.com/s/1CX7xCh1uJl-h5ZojO5SkNQ?pwd=hdtp) Extract the code (hdtp)
+We provide pretrained checkpoints. You can download pretrained models from  [Baidu cloud] (https://pan.baidu.com/s/1bNDjx4YN2bf8Lf8x98XKWg?pwd=8c44) Extract the code (8c44)
 
 ## Dataset
 
@@ -54,7 +63,7 @@ python main.py --config=configs/ve/church_ncsnpp_continuous.py  --workdir=exp_tr
 
 ## Test:
 
-Simulate : python MLDM_reconstruction_simulate.py
+Simulate : python LOTI_reconstruction_simulate_twin.py
 
-Experiment : python MLDM_reconstruction_experiment.py
+Experiment : python LOTI_reconstruction_experiment_twin.py
 
