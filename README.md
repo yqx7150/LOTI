@@ -58,13 +58,13 @@ place the dataset in the train file under the church folder.
 
 ## Train:
 
-SNO:python main.py --config=configs/ve/church_ncsnpp_continuous.py  --workdir=exp_train_pingole_image --mode=train --eval_folder=result
-SNT:python main.py --config=configs/ve/church_ncsnpp_continuous.py  --workdir=exp_train_twin_image --mode=train --eval_folder=result
+SNO: python main.py --config=configs/ve/church_ncsnpp_continuous.py  --workdir=exp_train_pingole_image --mode=train --eval_folder=result
+SNT: python main.py --config=configs/ve/church_ncsnpp_continuous.py  --workdir=exp_train_twin_image --mode=train --eval_folder=result
 
 
 ## Test:
 
-Simulate : python LOTI_reconstruction_simulate_twin.py
+Simulate: python LOTI_reconstruction_simulate_twin.py
 
-Experiment : python LOTI_reconstruction_experiment_twin.py
+Experiment: python LOTI_reconstruction_experiment_twin.py
 
