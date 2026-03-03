@@ -474,7 +474,7 @@ def get_pc_sampler(sde, sde_T, shape, predictor, corrector, inverse_scaler, snr,
                 ssim_1 = compare_ssim(np.abs(x_mean_save_cv), np.abs(data_ori), multichannel=True, data_range=1)
 
                 x_mean_save_img = np.stack((x_mean_save_cv[:, :, 2], x_mean_save_cv[:, :, 1], x_mean_save_cv[:, :, 0]), axis=2)
-                output_folder = f"/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/sampling/sampling/"
+                output_folder = f"./sampling/sampling/"
                 # 确保目标文件夹存在
                 os.makedirs(output_folder, exist_ok=True)
                 # 保存图像到目标文件夹
