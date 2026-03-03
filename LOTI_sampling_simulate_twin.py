@@ -54,8 +54,8 @@ sde_T= 'VESDE' #@param ['VESDE', 'VPSDE', 'subVPSDE'] {"type": "string"}
 if sde.lower() == 'vesde':
   from configs.ve import church_ncsnpp_continuous as configs
   from configs.ve import church_ncsnpp_continuous_T as configs_T
-  ckpt_filename = "/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/exp_train_pingole_image/checkpoints/checkpoint_43.pth" #(9:(20.2,0.5)
-  ckpt_filename_T = "/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/exp_train_twin5/checkpoints/checkpoint_50.pth"  # (9:(20.2,0.5)
+  ckpt_filename = "./exp_train_pingole_image/checkpoints/checkpoint_43.pth" 
+  ckpt_filename_T = "./exp_train_twin5/checkpoints/checkpoint_50.pth"  
   config = configs.get_config()
   config_T = configs_T.get_config()
   sde = VESDE(sigma_min=config.model.sigma_min, sigma_max=config.model.sigma_max, N=config.model.num_scales)
