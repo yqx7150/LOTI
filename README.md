@@ -26,13 +26,13 @@ Lensless imaging possesses the advantages of functional flexibility and high por
 <div align="center"><img src="https://github.com/yqx7150/LOTI/blob/main/Figs/Fig.6.png"> </div>    
 
 ## Lensless imaging system encoded by orthogonal-phase FZA mask.
-<div align="center"><img src="https://github.com/yqx7150/MLDM/blob/main/Figs/Fig.7.png"> </div>
+<div align="center"><img src="https://github.com/yqx7150/LOTI/blob/main/Figs/Fig.7.png"> </div>
 
 ## Comprehensive comparison of results in experimental validation. (a) Ground Truth. (b) BP. (c) CS. (d) MLDM. (e) LOTI. 
-<div align="center"><img src="https://github.com/yqx7150/MLDM/blob/main/Figs/Fig.8.png"> </div>
+<div align="center"><img src="https://github.com/yqx7150/LOTI/blob/main/Figs/Fig.8.png"> </div>
 
 ## Reconstruction results under real-world scenarios. (a) Ground Truth. (b) BP. (c) CS. (d) MLDM. (e) LOTI. 
-<div align="center"><img src="https://github.com/yqx7150/MLDM/blob/main/Figs/Fig.9.png"> </div>
+<div align="center"><img src="https://github.com/yqx7150/LOTI/blob/main/Figs/Fig.9.png"> </div>
 
 
 ## Requirements and Dependencies
