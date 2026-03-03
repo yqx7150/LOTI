@@ -10,7 +10,7 @@ from losses import get_optimizer
 from models.ema import ExponentialMovingAverage
 
 import  LOTI_reconstruction_experiment_twin
-from MyAdjointOperatorPropagation import my_adjoint_operator_propagation
+
 import torch.nn as nn
 import numpy as np
 import tensorflow as tf
@@ -51,8 +51,8 @@ sde_T= 'VESDE' #@param ['VESDE', 'VPSDE', 'subVPSDE'] {"type": "string"}
 if sde.lower() == 'vesde':
   from configs.ve import church_ncsnpp_continuous as configs
   from configs.ve import church_ncsnpp_continuous_T as configs_T
-  ckpt_filename = "/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/exp_train_pingole_image/checkpoints/checkpoint_43.pth" #(9:(20.2,0.5)
-  ckpt_filename_T = "/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/exp_train_twin5/checkpoints/checkpoint_50.pth"  # (9:(20.2,0.5)
+  ckpt_filename = "./exp_train_pingole_image/checkpoints/checkpoint_43.pth" #(9:(20.2,0.5)
+  ckpt_filename_T = "./exp_train_twin5/checkpoints/checkpoint_50.pth"  # (9:(20.2,0.5)
   config = configs.get_config()
   config_T = configs_T.get_config()
   sde = VESDE(sigma_min=config.model.sigma_min, sigma_max=config.model.sigma_max, N=config.model.num_scales)
@@ -109,16 +109,16 @@ probability_flow = False #@param {"type": "boolean"}
 
 
 for j in range(0,1,1):
-  img_ob_b = cv2.imread('/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/input/光照/手机聚光/Capture_00001.png', -1)
-  img_ob_g = cv2.imread('/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/input/光照/手机聚光/Capture_00001.png', -1)
-  img_ob_r = cv2.imread('/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/input/光照/手机聚光/Capture_00001.png', -1)
+  img_ob_b = cv2.imread('/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/input/exp/19b.png', -1)
+  img_ob_g = cv2.imread('/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/input/exp/19g.png', -1)
+  img_ob_r = cv2.imread('/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/input/exp/19r.png', -1)
   print(img_ob_b.shape)
   Im = np.stack((img_ob_r[:, :], img_ob_g[:, :], img_ob_b[:, :]), axis=2)
 
-  Xc1 = 2546 + 3
-  Yc1 = 2004
-  Xc2 = 3771
-  Yc2 = 2017 - 6
+  Xc1 = 1824+3-6
+  Yc1 = 1604+3+3
+  Xc2 = 3047-9
+  Yc2 = 1611-3+6
 
   dp = 0.0038 * 3
   di = 1
@@ -177,9 +177,9 @@ for j in range(0,1,1):
   for i in range(1):
     print('##################'+str(i)+'#######################')
      
-    img_size = config.data.image_size                  #256
-    channels = config.data.num_channels               #3
-    shape = (batch_size, channels, img_size, img_size)   #(1,3,256,256)
+    img_size = config.data.image_size                  
+    channels = config.data.num_channels               
+    shape = (batch_size, channels, img_size, img_size)   
 
     sampling_fn = LOTI_reconstruction_experiment_twin.get_pc_sampler(sde,sde_T,shape, predictor, corrector,
                                     inverse_scaler, snr, n_steps=n_steps,
