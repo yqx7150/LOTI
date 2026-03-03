@@ -109,9 +109,9 @@ probability_flow = False #@param {"type": "boolean"}
 
 
 for j in range(0,1,1):
-  img_ob_b = cv2.imread('/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/input/exp/19b.png', -1)
-  img_ob_g = cv2.imread('/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/input/exp/19g.png', -1)
-  img_ob_r = cv2.imread('/home/qgl/桌面/twin_image/MLDM-main（１）/MLDM_I/input/exp/19r.png', -1)
+  img_ob_b = cv2.imread('./input/exp/2b.png', -1)
+  img_ob_g = cv2.imread('./input/exp/2g.png', -1)
+  img_ob_r = cv2.imread('./input/exp/2r.png', -1)
   print(img_ob_b.shape)
   Im = np.stack((img_ob_r[:, :], img_ob_g[:, :], img_ob_b[:, :]), axis=2)
 
