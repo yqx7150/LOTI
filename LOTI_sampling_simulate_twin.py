@@ -11,9 +11,7 @@ from losses import get_optimizer
 from models.ema import ExponentialMovingAverage
 
 import LOTI_reconstruction_simulate_twin
-import MLDM_reconstruction_simulate_twin_tv
-import MLDM_reconstruction_simulate_twin4_O
-import MLDM_reconstruction_simulate_twin4_T
+
 
 import torch.nn as nn
 import numpy as np
@@ -115,49 +113,44 @@ psnr_result=[ ]
 ssim_result=[ ]
 
 
-# 设置输入和输出文件夹路径
-input_folder = './input/400' # 包含.mat文件的文件夹
-output_folder = './output/400'  # 保存重建结果的文件夹
-
-# 确保输出文件夹存在
+input_folder = './input/sim' 
+output_folder = './output/sim'  
 os.makedirs(output_folder, exist_ok=True)
 
-# 获取所有.mat文件
-mat_files = [f for f in os.listdir(input_folder) if f.endswith('.mat')]
-mat_files.sort()  # 按文件名排序
 
-# 初始化结果列表
+mat_files = [f for f in os.listdir(input_folder) if f.endswith('.mat')]
+mat_files.sort() 
+
+
 psnr_results = []
 psnr_1_results = []
 ssim_results = []
 ssim_1_results = []
 time_results = []
 k=0
-# 处理每个.mat文件
+
 for mat_file in mat_files:
     k+=1
     print(f"\n{'=' * 50}")
     print(f"Processing file: {mat_file}")
     print(f"{'=' * 50}")
 
-    # 加载.mat文件
     mat_path = os.path.join(input_folder, mat_file)
     mat_data = io.loadmat(mat_path)
 
-    # 提取数据 - 根据实际数据结构调整键名
-    img = mat_data['Im']  # 真实图像
-    img_ob1 = mat_data['I1']  # 第一个观测图像
-    img_ob2 = mat_data['I3']  # 第二个观测图像
+    img = mat_data['Im']  
+    img_ob1 = mat_data['I1']  
+    img_ob2 = mat_data['I3']  
 
-    # 转换为PyTorch张量并移动到GPU
+
     img = torch.from_numpy(img).permute(2, 0, 1).unsqueeze(0).cuda().float()
     img_ob1 = torch.from_numpy(img_ob1).cuda().float()
     img_ob2 = torch.from_numpy(img_ob2).cuda().float()
 
-    # 计算H1和H2（与原始代码相同）
+
     dp = 0.014
     di = 3
-    z1 = 500
+    z1 = 300
     r1 = 0.23#0.23
     M = di / z1
     ri = (1 + M) * r1
@@ -174,7 +167,7 @@ for mat_file in mat_files:
     H1 = np.array(H1, dtype=np.complex128)
     H2 = np.array(H2, dtype=np.complex128)
 
-    # 重建过程
+
     img_size = config.data.image_size
     channels = config.data.num_channels
     shape = (batch_size, channels, img_size, img_size)
@@ -189,16 +182,14 @@ for mat_file in mat_files:
     x, psnr_max, ssim_max, psnr_1_max, ssim_1_max = sampling_fn(score_model,score_model_T,img,H1,H2,img_ob1,img_ob2,mat_file)
     elapsed_time = time.time() - start_time
 
-    # 保存结果
     filename = os.path.splitext(mat_file)[0]
-    # 保存重建图像
+ 
     x_min = x.min()
     x_max = x.max()
     x_normalized = (x - x_min) / (x_max - x_min)
     output_path = os.path.join(output_folder, f"{filename}_recon.png")
     cv2.imwrite(output_path, x_normalized * 255)
 
-    # 保存指标
     psnr_results.append(psnr_max)
     psnr_1_results.append(psnr_1_max)
     ssim_results.append(ssim_max)
@@ -207,14 +198,13 @@ for mat_file in mat_files:
 
     print(f"File {mat_file} processed in {elapsed_time:.2f} seconds")
     print(f"PSNR: {psnr_max:.4f}, SSIM: {ssim_max:.4f}")
-# 计算平均值
+
 avg_psnr = np.mean(psnr_results) if psnr_results else 0
 avg_psnr_1 = np.mean(psnr_1_results) if psnr_1_results else 0
 avg_ssim = np.mean(ssim_results) if ssim_results else 0
 avg_ssim_1 = np.mean(ssim_1_results) if ssim_1_results else 0
 avg_time = np.mean(time_results) if time_results else 0
 
-# 打印平均值
 print(f"Average Results for {len(mat_files)} files:")
 print(f"Average PSNR: {avg_psnr:.4f}")
 print(f"Average PSNR_1: {avg_psnr_1:.4f}")
@@ -222,7 +212,7 @@ print(f"Average SSIM: {avg_ssim:.4f}")
 print(f"Average SSIM_1: {avg_ssim_1:.4f}")
 print(f"Average Processing Time: {avg_time:.2f} seconds")
 
-# 保存汇总结果
+
 results_df = pd.DataFrame({
     'File': mat_files,
     'PSNR': psnr_results,
@@ -232,7 +222,7 @@ results_df = pd.DataFrame({
     'Time(s)': time_results
 })
 
-# 添加平均值行
+
 avg_row = pd.DataFrame({
     'File': ['Average'],
     'PSNR': [avg_psnr],
@@ -243,11 +233,11 @@ avg_row = pd.DataFrame({
 })
 results_df = pd.concat([results_df, avg_row], ignore_index=True)
 
-# 保存到CSV
+
 results_csv = os.path.join(output_folder, 'reconstruction_results.csv')
 results_df.to_csv(results_csv, index=False)
 
-# 保存平均值到单独的文本文件
+
 with open(os.path.join(output_folder, 'average_results.txt'), 'w') as f:
     f.write(f"Average Results for {len(mat_files)} files:\n")
     f.write(f"Average PSNR: {avg_psnr:.4f}\n")
