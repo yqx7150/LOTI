@@ -13,13 +13,13 @@ Lensless imaging possesses the advantages of functional flexibility and high por
 
 
 ## The schematic diagram of FZA lensless imaging principle.
-<div align="center"><img src="https://github.com/yqx7150/LOTI/edit/main/Figs/Fig1.png"> </div>
+<div align="center"><img src="https://github.com/yqx7150/LOTI/blob/main/Figs/Fig.1.png"> </div>
 
 ## Joint learning of prior distributions in the high-dimensional solution space.
-<div align="center"><img src="https://github.com/yqx7150/LOTI/edit/main/Figs/Fig3.png"> </div>               
+<div align="center"><img src="https://github.com/yqx7150/LOTI/blob/main/Figs/Fig.3.png"> </div>               
 
 ## Generation in high-dimensional joint solution space.
-<div align="center"><img src="https://github.com/yqx7150/LOTI/edit/main/Figs/Fig4.png"> </div>    
+<div align="center"><img src="https://github.com/yqx7150/LOTI/blob/main/Figs/Fig.4.png"> </div>    
 
 ## The multi-phase lensless imaging system.
 <div align="center"><img src="https://github.com/yqx7150/MLDM/blob/main/Figs/fig8.png"> </div>
