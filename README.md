@@ -2,6 +2,7 @@
 
 **Paper**: High-quality FZA lensless imaging via joint generation of original-twin images
 Photonics Reaserch [https://doi.org/10.1364/PRJ.584406]
+
 **Authors**: QI YU†, MINGCHUN HUANG†, YUHAO WANG, WENBO WAN AND QIEGEN LIU
 
 Date : Jan-30-2026  
